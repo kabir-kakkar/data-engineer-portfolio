@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Data Engineer",
   email: "kabir.kakkar.cmu@gmail.com",
   location: "United States",
-  resumePath: "/Kabir_Kakkar_Resume_DataEngineer.pdf",
+  resumePath: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/Kabir_Kakkar_Resume_DataEngineer.pdf`,
   links: {
     linkedin: "https://www.linkedin.com/in/kabir-kakkar/",
     github: "https://github.com/kabir-kakkar",
