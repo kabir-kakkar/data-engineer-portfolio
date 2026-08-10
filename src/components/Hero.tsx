@@ -1,12 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
 import { hero, siteConfig } from "@/data/portfolio";
 import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
+import { HireModal } from "@/components/HireModal";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const [hireOpen, setHireOpen] = useState(false);
+  const [hireKey, setHireKey] = useState(0);
+
+  const openHireModal = () => {
+    setHireKey((key) => key + 1);
+    setHireOpen(true);
+  };
 
   return (
     <section
@@ -30,6 +39,12 @@ export function Hero() {
           >
             {siteConfig.name}
           </h1>
+          <p className="mt-3 inline-flex max-w-full items-center rounded-full border border-accent/25 bg-accent-soft px-3 py-1.5 text-sm font-medium text-accent">
+            {hero.availability}
+          </p>
+          <p className="mt-4 text-sm font-medium text-muted sm:text-base">
+            {hero.credential}
+          </p>
           <p className="mt-5 font-display text-xl font-medium tracking-tight text-foreground/90 sm:text-2xl">
             {hero.headline}
           </p>
@@ -45,12 +60,13 @@ export function Hero() {
               {hero.primaryCta.label}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
-            <a
-              href={hero.secondaryCta.href}
+            <button
+              type="button"
+              onClick={openHireModal}
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
             >
               {hero.secondaryCta.label}
-            </a>
+            </button>
             <a
               href={siteConfig.resumePath}
               target="_blank"
@@ -84,6 +100,12 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <HireModal
+        key={hireKey}
+        open={hireOpen}
+        onClose={() => setHireOpen(false)}
+      />
     </section>
   );
 }

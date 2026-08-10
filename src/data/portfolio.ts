@@ -21,11 +21,32 @@ export const navLinks = [
 ] as const;
 
 export const hero = {
+  availability: "Open to Data Engineer roles · Full-time · United States",
+  credential:
+    "🎓 Master’s in Information Systems Management · Carnegie Mellon University",
   headline: "Building reliable data systems at production scale",
   introduction:
     "I design batch and streaming pipelines across Kafka, Spark, Flink, and Airflow, and cloud data warehouses on Snowflake, Redshift, and BigQuery—processing hundreds of gigabytes to hundreds of millions of events daily with measurable gains in latency, quality, and reliability.",
   primaryCta: { label: "View My Work", href: "#projects" },
-  secondaryCta: { label: "Contact Me", href: "#contact" },
+  secondaryCta: { label: "Hire Me" },
+} as const;
+
+export const hireModal = {
+  title: "Hire Me",
+  description:
+    "Share a few details about the role and I will follow up over email.",
+  fields: {
+    name: "Name",
+    company: "Company",
+    email: "Email",
+    message: "Message",
+  },
+  namePlaceholder: "[Name]",
+  companyPlaceholder: "[Company]",
+  defaultMessage:
+    "Hi Kabir,\n\nMy name is [Name]. I came across your portfolio and wanted to reach out about a job opportunity at [Company]. We'd love to discuss how your experience with streaming pipelines and cloud data warehouses could be a fit.\n\nLooking forward to connecting.",
+  sendLabel: "Send",
+  cancelLabel: "Cancel",
 } as const;
 
 export const about = {
